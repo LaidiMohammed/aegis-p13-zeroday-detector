@@ -1,0 +1,42 @@
+{
+  "alerts": [
+    {
+      "timestamp": "2026-11-20T09:13:02",
+      "line_no": 4,
+      "path": "/ftp/../../../../etc/passwd",
+      "risk": "critical",
+      "reason": "traversal détecté; chemin système sensible (etc/passwd, /etc/shadow, etc.)",
+      "cwe": "CWE-22 (Path Traversal) + fuite système",
+      "evidence": "[2026-11-20 09:13:02] GET /ftp/../../../../etc/passwd HTTP/1.1 403 0"
+    },
+    {
+      "timestamp": "2026-11-20T09:13:10",
+      "line_no": 6,
+      "path": "/ftp/..%2f..%2fetc%2fshadow",
+      "risk": "critical",
+      "reason": "traversal détecté; chemin système sensible (etc/passwd, /etc/shadow, etc.)",
+      "cwe": "CWE-22 (Path Traversal) + fuite système",
+      "evidence": "[2026-11-20 09:13:10] GET /ftp/..%2f..%2fetc%2fshadow HTTP/1.1 403 0"
+    },
+    {
+      "timestamp": "2026-11-20T09:14:05",
+      "line_no": 8,
+      "path": "/ftp/../../../etc/shadow",
+      "risk": "critical",
+      "reason": "traversal détecté; chemin système sensible (etc/passwd, /etc/shadow, etc.)",
+      "cwe": "CWE-22 (Path Traversal) + fuite système",
+      "evidence": "[2026-11-20 09:14:05] GET /ftp/../../../etc/shadow HTTP/1.1 403 0"
+    }
+  ],
+  "summary": {
+    "log_file": "src\\data\\sample_access.log",
+    "total_alerts": 3,
+    "critical": 3,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "generated_at": "2026-11-19T23:20:48+00:00"
+  },
+  "detector": "aegis-p13-zeroday-detector",
+  "version": "1.0.0"
+}

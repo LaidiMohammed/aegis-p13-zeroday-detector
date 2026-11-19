@@ -1,0 +1,28 @@
+name: CI — P13 (Zéro-day + détection)
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Run tests
+        run: pytest -q
+      - name: Detector smoke
+        run: python -m src.detect --text "GET /ftp/../../../../etc/passwd HTTP/1.1 403"
