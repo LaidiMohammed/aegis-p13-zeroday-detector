@@ -10,3 +10,5 @@ dist/
 
 # Environnement local (clés API etc.) — jamais commité
 .env
+
+.vercel

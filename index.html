@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>P13 — Zéro-day + détection (Juice Shop) — aegis-p13-zeroday-detector</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #0f172a; color: #e5e7eb; }
+    .wrap { max-width: 960px; margin: auto; padding: 2rem 1rem; }
+    h1 { font-size: 1.6rem; color: #e2e8f0; }
+    h2 { font-size: 1.2rem; margin-top: 1.5rem; color: #9fb3cc; }
+    .card { background: #1e293b; padding: 1rem 1.2rem; border-radius: 10px; margin: .5rem 0; }
+    a { color: #7dd3fc; text-decoration: none; } a:hover { text-decoration: underline; }
+    .mono { font-family: ui-monospace, monospace; font-size: .9rem; }
+    .footer { font-size: .85rem; color: #94a3b8; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>AEGIS P13 — Zéro-day + détection (Juice Shop)</h1>
+  <p>
+    Audit de diagnostic du projet PFE P13 : détection et caractérisation de traversal
+    système (CWE-22) via Juice Shop — laboratoire autorisé local, données locales.
+    Fiche technique, specs et éthique disponibles dans le dépôt.
+  </p>
+  <h2>Fiche technique &amp; documents</h2>
+  <div class="card"><a href="https://raw.githubusercontent.com/LaidiMohammed/aegis-p13-zeroday-detector/main/docs/FICHE_TECHNIQUE.md" target="_blank" rel="noopener">Fiche technique — P13</a></div>
+  <div class="card"><a href="https://github.com/LaidiMohammed/aegis-p13-zeroday-detector" target="_blank" rel="noopener">GitHub repo : aegis-p13-zeroday-detector</a></div>
+  <h2>Résultats réels (exécutables à la démo)</h2>
+  <div class="card"><div class="mono">Détection : 3 alertes — CWE-22 traversal via Juice Shop (sample_access.log)</div></div>
+  <div class="card"><div class="mono">PoC traversal : 200 frontend (aucun marqueur) / 403 encodé — bloqué serve-index</div></div>
+  <h2>Éthique &amp; consignes</h2>
+  <div class="card"><a href="https://raw.githubusercontent.com/LaidiMohammed/aegis-p13-zeroday-detector/main/docs/ETHICS.md" target="_blank" rel="noopener">Consignes éthiques (stand-alone, labo local, pas de prod)</a></div>
+  <div class="card"><a href="https://raw.githubusercontent.com/LaidiMohammed/aegis-p13-zeroday-detector/main/docs/DEMO.md" target="_blank" rel="noopener">DEMO — sorties réelles à présenter au prof</a></div>
+  <p class="footer">aegis-p13-zeroday-detector · © 2026 Laidi Mohammed · Style pro, site statique.</p>
+</div>
+</body>
+</html>

@@ -65,7 +65,7 @@ git commit -m "feat(P13): detecteur + PoC de traversal Juice Shop + rapport"
 git push -u origin main
 ```
 
-Vercel (devant le prof) : [https://aegis-p13-zeroday-detector.vercel.app](https://aegis-p13-zeroday-detector.vercel.app) — site statique + routing Demo.
+Vercel (devant le prof) : [https://aegis-p13-zeroday-detector.vercel.app](https://aegis-p13-zeroday-detector.vercel.app) — site statique (voir `vercel.json`, framework null, site pro P13).
 
 ## Tests
 
