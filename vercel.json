@@ -1,5 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/json/v1/deployment.schema.json",
-  "framework": null,
-  "cleanUrls": true
+  "framework": "nextjs"
 }
