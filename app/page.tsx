@@ -1,4 +1,5 @@
 import DetectionTerminal from "@/components/DetectionTerminal";
+import CodeSection from "@/components/CodeSection";
 import CopyCommand from "@/components/CopyCommand";
 import Reveal from "@/components/Reveal";
 
@@ -41,8 +42,10 @@ export default function Page() {
             {[
               ["#objectif", "Objectif"],
               ["#architecture", "Architecture"],
+              ["#code", "Code"],
               ["#demo", "Démo"],
               ["#ethique", "Éthique"],
+              ["#lab", "Lab"],
             ].map(([href, label]) => (
               <a key={href} href={href} className="tag text-slate-400 transition hover:text-signal">
                 {label}
@@ -203,10 +206,43 @@ export default function Page() {
         </Reveal>
       </section>
 
+      {/* ============ CODE SOURCE ============ */}
+      <section id="code" className="mx-auto max-w-7xl px-5 py-16">
+        <Reveal>
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <span className="tag text-signal">03 / Code source</span>
+              <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">Le détecteur, à nu</h2>
+              <p className="mt-3 max-w-2xl text-slate-400">
+                Extraits réels de <code className="text-cyan">src/detect.py</code> — le cœur de la classification CWE-22.
+              </p>
+            </div>
+            <span className="font-mono text-xs text-slate-600">python · stdlib · typings</span>
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
+          <CodeSection />
+        </Reveal>
+        <Reveal delay={160}>
+          <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            {[
+              ["Efficacité", "Détecteur pur stdlib + typings — 60 lignes de logique métier, vitesse négligeable."],
+              ["Crédibilité", "Traversal bloqué par serve-index (403) : adaptation documentée dans src/exploit.py."],
+              ["Sortie", "JSON structuré {alerts, summary} — exit code 0 — rapport PDF via ReportLab."],
+            ].map(([t, d]) => (
+              <div key={t} className="border-l-2 border-cyan/50 pl-4">
+                <div className="tag text-cyan">{t}</div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-400">{d}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
       {/* ============ DEMO ============ */}
       <section id="demo" className="mx-auto max-w-7xl px-5 py-16">
         <Reveal>
-          <span className="tag text-signal">03 / Démonstration</span>
+          <span className="tag text-signal">04 / Démonstration</span>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">Quatre commandes, tout le flux</h2>
           <p className="mt-3 max-w-2xl text-slate-400">
             Ordre recommandé pour la soutenance : détection → PoC → rapport → démo complète.
@@ -256,7 +292,7 @@ export default function Page() {
       {/* ============ ETHIQUE ============ */}
       <section id="ethique" className="mx-auto max-w-7xl px-5 py-16">
         <Reveal>
-          <span className="tag text-signal">04 / Charte éthique</span>
+          <span className="tag text-signal">05 / Charte éthique</span>
           <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">Contraintes assumées</h2>
         </Reveal>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -270,6 +306,47 @@ export default function Page() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* ============ LAB SETUP ============ */}
+      <section id="lab" className="mx-auto max-w-7xl px-5 py-16">
+        <Reveal>
+          <span className="tag text-signal">06 / Laboratoire</span>
+          <h2 className="mt-2 font-display text-4xl font-bold sm:text-5xl">Autorisation &amp; téléchargements</h2>
+          <p className="mt-3 max-w-2xl text-slate-400">
+            Ce projet tourne sur une cible que vous possédez. Aucune autorisation externe n&apos;est requise
+            en laboratoire local — mais la règle d&apos;or reste absolue.
+          </p>
+        </Reveal>
+        <div className="cut-card amber-edge mt-8 overflow-hidden">
+          <div className="grid gap-px bg-slate-800/60 sm:grid-cols-[1.1fr_1.4fr_1fr]">
+            <div className="bg-panel px-5 py-3 tag text-slate-500">Outil</div>
+            <div className="bg-panel px-5 py-3 tag text-slate-500">Téléchargement / installation</div>
+            <div className="bg-panel px-5 py-3 tag text-slate-500">Autorisation</div>
+            {[
+              ["OWASP Juice Shop", "docker run -p 3000:3000 bkimminich/juice-shop · ou npm", "Aucune — cible locale 127.0.0.1"],
+              ["OWASP ZAP", "Gratuit & open-source (zap.zaproxy.org)", "Aucune — uniquement vos cibles"],
+              ["VMware Player", "Gratuit usage personnel (non-commercial)", "Aucune — réseau host-only"],
+              ["Metasploitable2", "VM gratuite Rapid7 (SourceForge)", "Aucune — VM isolée"],
+              ["DVWA", "Gratuit & open-source (DVWA GitHub)", "Aucune — labo local"],
+            ].map(([tool, dl, auth]) => (
+              <div key={tool} className="contents">
+                <div className="bg-panel px-5 py-4 font-mono text-[12px] text-cyan">{tool}</div>
+                <div className="bg-panel px-5 py-4 font-mono text-[11px] leading-relaxed text-slate-300">{dl}</div>
+                <div className="bg-panel px-5 py-4 text-[12px] text-slate-400">{auth}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <Reveal delay={100}>
+          <div className="mt-5 border-l-2 border-signal bg-signal/5 px-5 py-4">
+            <span className="tag text-signal">Règle d&apos;or</span>
+            <p className="mt-2 text-sm leading-relaxed text-slate-300">
+              Laboratoire local sur vos propres machines/VM → <b className="text-white">aucune autorisation requise</b>.
+              Dès que vous scannez un système tiers réel → <b className="text-white">autorisation écrite obligatoire</b>.
+            </p>
+          </div>
+        </Reveal>
       </section>
 
       {/* ============ FOOTER ============ */}
