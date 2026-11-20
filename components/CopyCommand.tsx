@@ -1,15 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CopyCommand({ command }: { command: string }) {
   const [copied, setCopied] = useState(false);
+  const timers = useRef<number[]>([]);
+  useEffect(() => () => { timers.current.forEach((x) => clearTimeout(x)); timers.current = []; }, []);
+  const pushTimer = (fn: () => void, ms: number) => { timers.current.push(window.setTimeout(fn, ms)); };
 
   async function copy() {
     try {
       await navigator.clipboard.writeText(command);
       setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
+      pushTimer(() => setCopied(false), 1600);
     } catch {
       setCopied(false);
     }

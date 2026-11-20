@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Phase = "idle" | "scanning" | "done";
 
@@ -21,13 +21,17 @@ export default function DetectionTerminal() {
   const [phase, setPhase] = useState<Phase>("idle");
   const [shown, setShown] = useState(0);
 
+  const timers = useRef<number[]>([]);
+  useEffect(() => () => { timers.current.forEach((x) => clearTimeout(x)); timers.current = []; }, []);
+  const pushTimer = (fn: () => void, ms: number) => { timers.current.push(window.setTimeout(fn, ms)); };
+
   function run() {
     setPhase("scanning");
     setShown(0);
     LOG_LINES.forEach((_, i) => {
-      window.setTimeout(() => setShown(i + 1), 320 * (i + 1));
+      pushTimer(() => setShown(i + 1), 320 * (i + 1));
     });
-    window.setTimeout(() => setPhase("done"), 320 * LOG_LINES.length + 350);
+    pushTimer(() => setPhase("done"), 320 * LOG_LINES.length + 350);
   }
 
   function reset() {

@@ -16,8 +16,8 @@ const config: Config = {
         mist: "#94a3b8",
       },
       fontFamily: {
-        display: ["Space Grotesk", "Arial", "sans-serif"],
-        mono: ["Space Mono", "Consolas", "monospace"],
+        display: ["var(--font-display)", "Arial", "sans-serif"],
+        mono: ["var(--font-mono)", "Consolas", "monospace"],
       },
     },
   },
