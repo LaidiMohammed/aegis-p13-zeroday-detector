@@ -1,4 +1,4 @@
-import DetectionTerminal from "@/components/DetectionTerminal";
+import DetectConsole from "@/components/DetectConsole";
 import CodeSection from "@/components/CodeSection";
 import CopyCommand from "@/components/CopyCommand";
 import Reveal from "@/components/Reveal";
@@ -11,14 +11,21 @@ const COMMANDS = [
 ];
 
 const TECHS = [
-  "Python 3.11+",
-  "stdlib + typings",
-  "ReportLab (PDF)",
-  "pytest",
-  "GitHub Actions",
-  "Vercel",
-  "Juice Shop (local)",
-  "Docker / Node",
+  "Next.js 14 (App Router)",
+  "TypeScript",
+  "Tailwind CSS",
+  "API Route /api/detect",
+  "moteur CWE-22 porté en TS",
+  "Vercel Serverless",
+];
+
+const LAB_TECHS = [
+  "Python 3.11+ (src/detect.py, local)",
+  "ReportLab (PDF, local)",
+  "pytest (13 tests, local)",
+  "GitHub Actions (CI)",
+  "Juice Shop 127.0.0.1:3000",
+  "Docker (laboratoire uniquement)",
 ];
 
 const ETHICS = [
@@ -128,7 +135,7 @@ export default function Page() {
           </Reveal>
         </div>
         <Reveal delay={120}>
-          <DetectionTerminal />
+          <DetectConsole />
         </Reveal>
       </section>
 
@@ -281,8 +288,16 @@ export default function Page() {
       <section className="mx-auto max-w-7xl px-5 py-10">
         <Reveal>
           <div className="cut-card cyan-edge flex flex-wrap items-center gap-3 p-6">
-            <span className="tag mr-2 text-cyan">Stacks</span>
+            <span className="tag mr-2 text-cyan">Stack du site</span>
             {TECHS.map((t) => (
+              <span key={t} className="border border-slate-700 bg-black/20 px-3 py-1.5 font-mono text-[11px] text-slate-300">{t}</span>
+            ))}
+          </div>
+        </Reveal>
+        <Reveal delay={80}>
+          <div className="cut-card amber-edge mt-4 flex flex-wrap items-center gap-3 p-6">
+            <span className="tag mr-2 text-amber">Labo local (hors ligne)</span>
+            {LAB_TECHS.map((t) => (
               <span key={t} className="border border-slate-700 bg-black/20 px-3 py-1.5 font-mono text-[11px] text-slate-300">{t}</span>
             ))}
           </div>
